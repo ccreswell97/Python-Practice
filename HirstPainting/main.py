@@ -1,6 +1,5 @@
 # This program re-creates the Damien Hirst spot paintings
 # https://www.artsy.net/artist-series/damien-hirst-spots
-# 8 rows,  11 columns 
 
 import turtle
 import random
