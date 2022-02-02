@@ -1,7 +1,7 @@
 from turtle import Screen
 from time import sleep
 from player import Player
-from car import Car
+from car_manager import CarManager
 
 def main():
     screen = Screen()
@@ -9,13 +9,12 @@ def main():
     screen.title("Turtle Crossing")
     screen.tracer(0)
 
-    # Make many cars run along the screen
-    # Detect car/turtle collision
-    # Create levels and detect end of crossing
-    # Make cars move faster after level up
+    # TODO: Detect car/turtle collision
+    # TODO: Create levels and detect end of crossing
+    # TODO: Make cars move faster after level up
 
     player = Player()
-    car = Car()
+    car_manager = CarManager()
 
     screen.listen()
     screen.onkey(player.hop_forward, "w")
@@ -23,9 +22,12 @@ def main():
 
     game_is_on = True
     while game_is_on:
-        screen.update()
-        car.move_forward()
         sleep(0.1)
+        screen.update()
+
+        car_manager.create_car()
+        car_manager.move_cars()
+        
         
 if __name__ == "__main__":
     main()

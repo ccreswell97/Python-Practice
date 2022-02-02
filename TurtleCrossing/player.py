@@ -6,7 +6,7 @@ class Player(Turtle):
         self.up()
         self.shape("turtle")
         self.setheading(90)
-        self.setpos(0,-150)
+        self.setpos(0,-275)
 
     def hop_forward(self):
         self.forward(20)
