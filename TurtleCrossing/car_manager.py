@@ -30,11 +30,10 @@ class CarManager:
     
     def increase_car_speed(self):
         self.move_distance += 5
-        if self.move_distance >= 20:
+        if self.move_distance >= 15:
             self.increase_random_chance()
 
     def increase_random_chance(self):
         if len(self.random_choices) < 7:
             last_element = self.random_choices[-1]
             self.random_choices.append(last_element + 1)
-            print(self.random_choices)

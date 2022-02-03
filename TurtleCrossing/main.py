@@ -29,7 +29,11 @@ def main():
             player.reset_turtle()
             car_manager.increase_car_speed()
 
-        # TODO: Detect car/turtle collision
+        for car in car_manager.all_cars:
+            if player.distance(car) < 25:
+                level_score.game_over()
+                game_is_on = False
+                screen.exitonclick()
 
         car_manager.create_car()
         car_manager.move_cars()
