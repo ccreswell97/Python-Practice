@@ -10,6 +10,8 @@ turtle.colormode(255)
 ramona = turtle.Turtle()
 ramona.width(10)
 ramona.up()
+ramona.speed("fastest")
+ramona.hideturtle()
 
 x = -230
 y = -130
