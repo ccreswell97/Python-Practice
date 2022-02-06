@@ -1,4 +1,4 @@
-from pandas import read_csv, value_counts, DataFrame
+from pandas import read_csv, DataFrame
 
 def main():
     squirrel_data = read_csv("2018_Central_Park_Squirrel_Census_-_Squirrel_Data.csv")
