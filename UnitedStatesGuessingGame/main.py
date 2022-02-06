@@ -1,7 +1,7 @@
 # Play this United States guessing game and test your knowledge of US geography!
 
 from turtle import Screen, Turtle
-from pandas import read_csv
+from pandas import read_csv, DataFrame
 
 # used this method to get more accurate spots for the state name to sit 
 def get_mouse_click_coord(x,y):
@@ -38,6 +38,13 @@ def main():
             screen.exitonclick()
             return
         
+        if answer == "Exit":
+            # Create csv with missing states
+            state_names_list = list(states.keys())
+            for state in guesses:
+                state_names_list.remove(state)
+            DataFrame(state_names_list).to_csv("states_to_learn.csv")
+            return
     
 if __name__ == "__main__":
     main()
