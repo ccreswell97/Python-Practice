@@ -6,7 +6,7 @@ RED = "#e7305b"
 GREEN = "#9bdeac"
 YELLOW = "#f7f5dd"
 FONT_NAME = "Courier"
-WORK_MIN = 25
+WORK_MIN = 1
 SHORT_BREAK_MIN = 5
 LONG_BREAK_MIN = 20
 
@@ -21,6 +21,7 @@ def reset_timer():
 def start_timer():
     global reps 
     reps += 1
+    win.attributes('-topmost',False)
     if reps % 8 == 0:
         countdown(LONG_BREAK_MIN*60)
         timer_label.config(text="Break", fg=RED)
@@ -40,6 +41,7 @@ def countdown(count):
         global timer
         timer = win.after(1000, countdown, count - 1)
     else:
+        win.attributes('-topmost',True)
         start_timer()
         
         marks = ""
