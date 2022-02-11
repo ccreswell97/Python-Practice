@@ -1,11 +1,15 @@
-from tkinter import Button, Canvas, Entry, Label, Tk, PhotoImage
-from turtle import width
-
-from pandas import wide_to_long
+from tkinter import Button, Canvas, Entry, Label, Tk, PhotoImage, END
 
 # TODO: PASSWORD GENERATOR 
 
-# TODO: SAVE PASSWORD 
+# Absolutely NOT a secure way to store passwords, this is just practice for now!! I would never store a user's password in plain text and this is only meant to be run on a local machine
+def write_data():
+    with open("data.txt", "a") as file:
+        file.write(f"{website_input.get()} | {email_username_input.get()} | {password_input.get()}\n")
+
+    website_input.delete(0,END)
+    email_username_input.delete(0, END)
+    password_input.delete(0, END) 
 
 win = Tk()
 win.title("Password Manager")
@@ -44,8 +48,7 @@ generate_pw_button = Button(text="Generate Password")
 generate_pw_button.grid(column=2, row=3)
 
 # Add button
-add_button = Button(width=35, text="Add")
+add_button = Button(width=35, text="Add", command=write_data)
 add_button.grid(column=1, row=4, columnspan=2)
-
 
 win.mainloop()
