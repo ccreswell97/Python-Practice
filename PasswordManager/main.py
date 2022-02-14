@@ -1,18 +1,30 @@
 from tkinter import Button, Canvas, Entry, Label, Tk, PhotoImage, END, messagebox
-import random
+from random import choice, randint, shuffle
+from string import ascii_letters, punctuation
 
-# TODO: PASSWORD GENERATOR 
 def generate_pw():
-    password = ""
+    letters = [choice(ascii_letters) for _ in range(8)]
+    punct = [choice(punctuation) for _ in range(2)]
+    numbers = [str(randint(0,9)) for _ in range(2)]
+
+    password_list = letters + punct + numbers
+    shuffle(password_list)
+    password = ''.join(password_list)
 
     password_input.delete(0, END)
     password_input.insert(0, password)
+    win.clipboard_clear()
+    win.clipboard_append(password)
 
 # Absolutely NOT a secure way to store passwords, this is just practice for now!! I would never store a user's password in plain text and this is only meant to be run on a local machine
 def write_data():
-    website = website_input.get()
-    username = email_username_input.get()
-    password = password_input.get()
+    website = website_input.get().strip()
+    username = email_username_input.get().strip()
+    password = password_input.get().strip()
+
+    if len(website) == 0 or len(username) == 0 or len(password) == 0:
+        messagebox.showwarning(title="Empty fields", message="Please don't leave any fields empty!")
+        return
 
     is_correct = messagebox.askokcancel(title=website, message=f"Are these details correct?\nWebsite: {website}\nUsername: {username}\nPassword: {password}" )
 
