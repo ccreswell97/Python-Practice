@@ -8,4 +8,7 @@ while word != "EXIT":
     word = input("Enter a word to get the phonetic alphabet version of: ").upper()
     phonetic_word = [alphabet_dict.get(letter) for letter in word]
 
-    print(f"{' '.join(phonetic_word)}\n")
+    try: 
+        print(f"{' '.join(phonetic_word)}\n")
+    except TypeError:
+        print("Please only enter letters\n")
